@@ -9,6 +9,7 @@ object Login {
 	def loginAs(login: String) = {
 		exec(http("LogIn")
 			.get("/logIn?userName="+login)
+			.check(jsonPath("$.status").is("loggedIn "+login))
 		)
 	}
 
