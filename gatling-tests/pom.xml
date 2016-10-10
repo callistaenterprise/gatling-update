@@ -70,6 +70,18 @@
 					<artifactId>scala-maven-plugin</artifactId>
 					<version>${scala-maven-plugin.version}</version>
 				</plugin>
+				<plugin>
+					<groupId>io.gatling</groupId>
+					<artifactId>gatling-maven-plugin</artifactId>
+					<version>${gatling.version}</version>
+					<configuration>
+						<configFolder>src/test/resources</configFolder>
+						<dataFolder>src/test/resources/data</dataFolder>
+						<resultsFolder>target/gatling/results</resultsFolder>
+						<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
+						<simulationsFolder>src/test/scala</simulationsFolder>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -92,26 +104,6 @@
 								<arg>-language:implicitConversions</arg>
 								<arg>-language:postfixOps</arg>
 							</args>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>io.gatling</groupId>
-				<artifactId>gatling-maven-plugin</artifactId>
-				<version>${gatling.version}</version>
-				<executions>
-					<execution>
-						<phase>test</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<configFolder>src/test/resources</configFolder>
-							<dataFolder>src/test/resources/data</dataFolder>
-							<resultsFolder>target/gatling/results</resultsFolder>
-							<requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
-							<simulationsFolder>src/test/scala</simulationsFolder>
 						</configuration>
 					</execution>
 				</executions>
