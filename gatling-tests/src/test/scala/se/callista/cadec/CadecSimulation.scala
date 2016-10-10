@@ -11,10 +11,13 @@ class CadecSimulation extends Simulation {
 	val httpProtocol = http
 		.baseURL("http://localhost:9090")
 
+	val testpersonnummer = csv("testpersonnummer_skatteverket.cvs").circular
+
 	val scn = scenario("CadecSimulation")
 		.repeat(5) {
-			exec(http("LogIn")
-				.get("/logIn")
+			feed(testpersonnummer)
+			.exec(http("LogIn")
+				.get("/logIn?userName=${personNr}")
 			)
 			.pause(2 seconds)
 			.exec(http("DoThis")
