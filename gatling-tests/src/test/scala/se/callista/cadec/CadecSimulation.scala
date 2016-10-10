@@ -27,5 +27,5 @@ class CadecSimulation extends Simulation {
 				.get("/logOut")
 			)
 		}
-	setUp(scn.inject(atOnceUsers(1))).protocols(Configuration.httpConf)
+	setUp(scn.inject(rampUsers(500) over (10 seconds))).protocols(Configuration.httpConf)
 }
